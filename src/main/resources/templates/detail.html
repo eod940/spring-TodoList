@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시물 상세</title>
+</head>
+<body>
+    <h1>게시물 상세</h1>
+    <p>제목: <span th:text="${board.title}"></span></p>
+    <p>내용: <span th:text="${board.content}"></span></p>
+    <p>작성자: <span th:text="${board.createdBy}"></span></p>
+    <p>수정자: <span th:text="${board.modifiedBy}"></span></p>
+    <p>생성일: <span th:text="${board.formattedCreatedDate}"></span></p>
+    <p>수정일: <span th:text="${board.formattedModifiedDate}"></span></p>
+
+    <a th:href="@{/api/boards/edit/{id}(id=${board.id})}">수정</a>
+	<a th:href="@{/api/boards}">목록으로</a>
+</body>
+</html>
