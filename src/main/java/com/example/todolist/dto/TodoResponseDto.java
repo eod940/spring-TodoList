@@ -6,15 +6,18 @@ import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class TodoFormDto {
-  private String task;  // 할 일
-
+public class TodoResponseDto {
+  private Long todoId;
+  private String task;
   @JsonFormat(shape = Shape.STRING, pattern = "yyyy-MM-dd")
   private LocalDate dueDate;  // 마감 날짜
   private String status;  // 할 일의 상태 (1: 진행중, 2: 완료)
   private Integer priority;  // 우선순위 (1, 2, 3)
+  private Integer remainDays;  // 현재 날짜와 비교해 남은 일 수
 }

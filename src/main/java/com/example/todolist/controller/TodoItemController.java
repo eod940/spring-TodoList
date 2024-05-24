@@ -1,12 +1,14 @@
 package com.example.todolist.controller;
 
 import com.example.todolist.dto.TodoFormDto;
+import com.example.todolist.dto.TodoResponseDto;
 import com.example.todolist.model.TodoItem;
 import com.example.todolist.service.TodoItemService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +25,7 @@ public class TodoItemController {
 
   private final TodoItemService todoItemService;
 
-  @GetMapping
+  @GetMapping("/list")
   public ResponseEntity<List<TodoItem>> getTodoItemList(
       @RequestParam(value = "task", required = false) String task
   ) {
@@ -56,5 +58,12 @@ public class TodoItemController {
   ) {
     todoItemService.deleteTodo(todoId);
     return ResponseEntity.noContent().build();
+  }
+
+  // Thymeleaf 템플릿 반환
+  @GetMapping
+  public String getAllItems(Model model) {
+    model.addAttribute("todos", todoItemService.getAllDataForThymeleaf());
+    return "todo-list";
   }
 }
