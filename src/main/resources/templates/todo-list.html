@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+</head>
+<body>
+
+<h1>Todo List</h1>
+
+<div th:if="${not #lists.isEmpty(todos)}">
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Task</th>
+      <th>Due Date</th>
+      <th>Status</th>
+      <th>Priority</th>
+      <th>Days Remaining</th> <!-- 추가된 열 -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="todo : ${todos}">
+      <td th:text="${todo.todoId}">1</td>
+      <td th:text="${todo.task}">Sample Task</td>
+      <td th:text="${todo.dueDate}">2024-05-23</td>
+      <td th:text="${todo.status}">Pending</td>
+      <td th:text="${todo.priority}">1</td>
+      <td th:text="${todo.remainDays}">10</td> <!-- 추가된 데이터 -->
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div th:if="${#lists.isEmpty(todos)}">
+  <p>No todo items found.</p>
+</div>
+
+</body>
+</html>
