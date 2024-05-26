@@ -1,7 +1,6 @@
 package com.example.todolist.controller;
 
 import com.example.todolist.dto.TodoFormDto;
-import com.example.todolist.dto.TodoResponseDto;
 import com.example.todolist.model.TodoItem;
 import com.example.todolist.service.TodoItemService;
 import java.util.List;
